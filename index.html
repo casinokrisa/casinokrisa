@@ -22,55 +22,62 @@
         </nav>
     </header>
 
-    <div class="container">
-        <aside class="sidebar">
-            <section class="profile">
-                <img src="profile.jpg" alt="Профиль" class="profile-img">
-                <p>Просто SEO-шник</p>
-            </section>
-            <section class="categories">
-                <h2>Категории</h2>
-                <ul>
-                    <li><a href="#">SEO (8)</a></li>
-                    <li><a href="#">Проекты (1)</a></li>
-                </ul>
-            </section>
-            <section class="search">
-                <h2>Поиск</h2>
-                <input type="text" placeholder="Поиск...">
-            </section>
-        </aside>
+    <main>
+        <section class="articles">
+            <!-- Пример статей -->
+            <article class="card">
+                <h2>Заголовок статьи 1</h2>
+                <p>Краткое описание статьи 1...</p>
+                <a href="#">Читать далее</a>
+            </article>
+            <article class="card">
+                <h2>Заголовок статьи 2</h2>
+                <p>Краткое описание статьи 2...</p>
+                <a href="#">Читать далее</a>
+            </article>
+            <!-- Добавить еще статьи -->
+        </section>
 
-        <main>
-            <section class="articles">
-                <h2>Все посты</h2>
-                <!-- Пример статей -->
-                <article class="card">
-                    <h3>Заголовок статьи 1</h3>
-                    <p>Краткое описание статьи 1...</p>
-                    <a href="#">Читать далее</a>
-                </article>
-                <article class="card">
-                    <h3>Заголовок статьи 2</h3>
-                    <p>Краткое описание статьи 2...</p>
-                    <a href="#">Читать далее</a>
-                </article>
-                <!-- Добавить еще статьи -->
-            </section>
-        </main>
+        <section id="podcasts">
+            <h2>Подкасты</h2>
+            <!-- Содержание подкастов -->
+        </section>
 
-        <aside class="sidebar right-sidebar">
-            <section class="projects">
-                <h2>Проекты</h2>
-                <p>OOWG</p>
-            </section>
-            <section class="contacts">
-                <h2>Контакты</h2>
-                <p><a href="#">Telegram</a></p>
-                <p><a href="#">RSS</a></p>
-            </section>
-        </aside>
-    </div>
+        <section id="social">
+            <h2>Социальные сети</h2>
+            <div class="social-icons">
+                <a href="https://twitter.com" target="_blank" class="icon"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com" target="_blank" class="icon"><i class="fab fa-instagram"></i></a>
+                <a href="https://t.me" target="_blank" class="icon"><i class="fab fa-telegram"></i></a>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>О нас</h2>
+            <!-- Информация о сайте -->
+        </section>
+
+        <section id="privacy">
+            <h2>Политика конфиденциальности</h2>
+            <!-- Политика конфиденциальности -->
+        </section>
+
+        <section id="contact">
+            <h2>Контакты</h2>
+            <form action="#" method="post">
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Сообщение:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Отправить</button>
+            </form>
+        </section>
+    </main>
 
     <footer>
         <p>&copy; 2024 casinokrisa. Все права защищены.</p>
