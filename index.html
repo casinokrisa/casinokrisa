@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>casinokrisa</title>
-    <!-- Подключение шрифта Segoe UI через системные шрифты -->
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -22,7 +21,7 @@
         }
         h1 {
             margin: 0;
-            font-size: 2em; /* Уменьшил размер заголовка для мобильных устройств */
+            font-size: 2em;
         }
         .container {
             flex: 1;
@@ -45,7 +44,7 @@
         }
         .article h2 {
             margin-top: 0;
-            font-size: 1.5em; /* Уменьшил размер заголовка статьи для мобильных устройств */
+            font-size: 1.5em;
         }
         footer {
             background-color: #ffffff;
@@ -59,91 +58,149 @@
             justify-content: center;
             gap: 20px;
             margin: 20px 0;
-            flex-wrap: nowrap; /* Предотвращает оборачивание иконок на следующую строку */
+            flex-wrap: nowrap;
         }
         .social-icons a {
             color: #333;
             text-decoration: none;
-            font-size: 2em; /* Увеличил размер иконок для лучшего отображения */
+            font-size: 2em;
         }
         /* Боковое меню */
         .sidebar {
-            height: 100vh;
-            width: 250px;
             position: fixed;
             top: 0;
             left: 0;
+            width: 60px; /* Ширина иконки */
+            height: 60px; /* Высота иконки */
+            background-color: #333;
+            color: #fff;
+            border-radius: 30px; /* Закругленные края */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: width 0.3s ease;
+            z-index: 1000;
+        }
+        .sidebar.open {
+            width: 250px; /* Ширина открытого меню */
+        }
+        .sidebar-content {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
             background-color: #333;
             color: #fff;
             padding: 20px;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transform: translateX(-250px);
+            transition: transform 0.3s ease;
             overflow-y: auto;
-            z-index: 1000;
         }
-        .sidebar h2 {
+        .sidebar-content.open {
+            transform: translateX(0);
+        }
+        .sidebar-content h2 {
             margin-top: 0;
             font-size: 1.5em;
         }
-        .sidebar a {
+        .sidebar-content a {
             display: block;
             color: #fff;
             text-decoration: none;
-            padding: 10px;
+            padding: 10px 0;
             font-size: 1.2em;
         }
-        .sidebar a:hover {
+        .sidebar-content a:hover {
             background-color: #575757;
         }
-        .main-content {
-            margin-left: 270px; /* Учитываем ширину бокового меню */
-            flex: 1;
+        .submenu {
+            display: none;
+            padding-left: 20px;
+        }
+        .submenu a {
+            padding: 5px 0;
+            font-size: 1em;
+        }
+        .submenu.open {
+            display: block;
+        }
+        .menu-toggle {
+            display: none;
         }
         /* Мобильная оптимизация */
         @media (max-width: 768px) {
             .article {
                 flex: 1 1 100%;
-                margin-bottom: 20px; /* Добавил отступ снизу для статей на мобильных устройствах */
+                margin-bottom: 20px;
             }
             h1 {
-                font-size: 1.8em; /* Уменьшил размер заголовка на мобильных устройствах */
+                font-size: 1.8em;
             }
             .article h2 {
-                font-size: 1.2em; /* Уменьшил размер заголовка статьи на мобильных устройствах */
+                font-size: 1.2em;
             }
             .sidebar {
-                width: 200px; /* Уменьшил ширину бокового меню на мобильных устройствах */
+                width: 50px;
+                height: 50px;
+                border-radius: 25px;
             }
-            .main-content {
-                margin-left: 220px; /* Учитываем ширину бокового меню на мобильных устройствах */
+            .sidebar.open {
+                width: 200px;
+            }
+            .sidebar-content {
+                width: 200px;
+            }
+            .menu-toggle {
+                display: block;
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                background: #333;
+                color: #fff;
+                border: none;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5em;
+                cursor: pointer;
+                z-index: 1001;
             }
         }
         @media (max-width: 480px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                overflow: visible;
-            }
-            .main-content {
-                margin-left: 0;
-            }
             .social-icons {
-                flex-direction: row; /* Убедитесь, что иконки остаются горизонтальными */
-                gap: 10px; /* Уменьшил зазор между иконками */
+                flex-direction: row;
+                gap: 10px;
             }
             .social-icons a {
-                font-size: 1.5em; /* Уменьшил размер иконок на самых маленьких экранах */
+                font-size: 1.5em;
             }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!-- Подключение Font Awesome -->
 </head>
 <body>
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="sidebar-content" id="sidebar-content">
         <h2>Меню</h2>
-        <a href="#">Главная</a>
-        <a href="#">Статьи</a>
-        <a href="#">О нас</a>
-        <a href="#">Контакты</a>
+        <a href="#">Подкасты</a>
+        <a href="#" id="social-toggle">Социальные сети</a>
+        <div class="submenu" id="social-submenu">
+            <a href="https://t.me/casinokrisa" target="_blank" aria-label="Telegram">Telegram</a>
+            <a href="https://www.instagram.com/casinokrisa/" target="_blank" aria-label="Instagram">Instagram</a>
+            <a href="https://twitter.com/casinokrisa_x" target="_blank" aria-label="Twitter">Twitter</a>
+            <a href="https://www.youtube.com/@troeproroi" target="_blank" aria-label="YouTube">YouTube</a>
+        </div>
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Отказ от ответственности</a>
     </div>
     <div class="main-content">
         <header>
@@ -175,5 +232,20 @@
             <p>&copy; 2024 casinokrisa. Все права защищены.</p>
         </footer>
     </div>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const sidebarContent = document.getElementById('sidebar-content');
+        const socialToggle = document.getElementById('social-toggle');
+        const socialSubmenu = document.getElementById('social-submenu');
+
+        sidebar.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            sidebarContent.classList.toggle('open');
+        });
+
+        socialToggle.addEventListener('click', () => {
+            socialSubmenu.classList.toggle('open');
+        });
+    </script>
 </body>
 </html>
