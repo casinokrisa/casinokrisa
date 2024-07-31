@@ -12,6 +12,7 @@
             margin: 0;
             padding: 0;
             color: #333;
+            display: flex;
         }
         header {
             background-color: #ffffff;
@@ -24,6 +25,7 @@
             font-size: 2em; /* Уменьшил размер заголовка для мобильных устройств */
         }
         .container {
+            flex: 1;
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
@@ -64,6 +66,37 @@
             text-decoration: none;
             font-size: 2em; /* Увеличил размер иконок для лучшего отображения */
         }
+        /* Боковое меню */
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        .sidebar h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        .sidebar a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 1.2em;
+        }
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+        .main-content {
+            margin-left: 270px; /* Учитываем ширину бокового меню */
+            flex: 1;
+        }
         /* Мобильная оптимизация */
         @media (max-width: 768px) {
             .article {
@@ -76,8 +109,23 @@
             .article h2 {
                 font-size: 1.2em; /* Уменьшил размер заголовка статьи на мобильных устройствах */
             }
+            .sidebar {
+                width: 200px; /* Уменьшил ширину бокового меню на мобильных устройствах */
+            }
+            .main-content {
+                margin-left: 220px; /* Учитываем ширину бокового меню на мобильных устройствах */
+            }
         }
         @media (max-width: 480px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                overflow: visible;
+            }
+            .main-content {
+                margin-left: 0;
+            }
             .social-icons {
                 flex-direction: row; /* Убедитесь, что иконки остаются горизонтальными */
                 gap: 10px; /* Уменьшил зазор между иконками */
@@ -90,33 +138,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!-- Подключение Font Awesome -->
 </head>
 <body>
-    <header>
-        <h1>casinokrisa</h1>
-    </header>
-    <div class="container">
-        <div class="articles">
-            <div class="article">
-                <h2>Статья 1</h2>
-                <p>Краткое описание первой статьи. Здесь будет информация о casinokrisa.</p>
-            </div>
-            <div class="article">
-                <h2>Статья 2</h2>
-                <p>Краткое описание второй статьи. Здесь будет информация о casinokrisa.</p>
-            </div>
-            <div class="article">
-                <h2>Статья 3</h2>
-                <p>Краткое описание третьей статьи. Здесь будет информация о casinokrisa.</p>
-            </div>
-        </div>
+    <div class="sidebar">
+        <h2>Меню</h2>
+        <a href="#">Главная</a>
+        <a href="#">Статьи</a>
+        <a href="#">О нас</a>
+        <a href="#">Контакты</a>
     </div>
-    <footer>
-        <div class="social-icons">
-            <a href="https://t.me/casinokrisa" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
-            <a href="https://www.instagram.com/casinokrisa/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://twitter.com/casinokrisa_x" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.youtube.com/@troeproroi" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <div class="main-content">
+        <header>
+            <h1>casinokrisa</h1>
+        </header>
+        <div class="container">
+            <div class="articles">
+                <div class="article">
+                    <h2>Статья 1</h2>
+                    <p>Краткое описание первой статьи. Здесь будет информация о casinokrisa.</p>
+                </div>
+                <div class="article">
+                    <h2>Статья 2</h2>
+                    <p>Краткое описание второй статьи. Здесь будет информация о casinokrisa.</p>
+                </div>
+                <div class="article">
+                    <h2>Статья 3</h2>
+                    <p>Краткое описание третьей статьи. Здесь будет информация о casinokrisa.</p>
+                </div>
+            </div>
         </div>
-        <p>&copy; 2024 casinokrisa. Все права защищены.</p>
-    </footer>
+        <footer>
+            <div class="social-icons">
+                <a href="https://t.me/casinokrisa" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                <a href="https://www.instagram.com/casinokrisa/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/casinokrisa_x" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@troeproroi" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>&copy; 2024 casinokrisa. Все права защищены.</p>
+        </footer>
+    </div>
 </body>
 </html>
