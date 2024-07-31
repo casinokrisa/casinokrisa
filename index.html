@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>casinokrisa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!-- Подключение Font Awesome -->
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-color: #f4f4f9;
             margin: 0;
             padding: 0;
@@ -21,7 +22,7 @@
         }
         h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 2em; /* Уменьшил размер заголовка для мобильных устройств */
         }
         .container {
             max-width: 1200px;
@@ -43,6 +44,7 @@
         }
         .article h2 {
             margin-top: 0;
+            font-size: 1.5em; /* Уменьшил размер заголовка статьи для мобильных устройств */
         }
         footer {
             background-color: #ffffff;
@@ -56,196 +58,65 @@
             justify-content: center;
             gap: 20px;
             margin: 20px 0;
+            flex-wrap: nowrap; /* Предотвращает оборачивание иконок на следующую строку */
         }
         .social-icons a {
             color: #333;
             text-decoration: none;
-            font-size: 1.5em;
+            font-size: 2em; /* Увеличил размер иконок для лучшего отображения */
         }
-        /* Styles for the sidebar menu */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 250px;
-            height: 100%;
-            background-color: #ffffff;
-            border-right: 1px solid #ddd;
-            padding: 20px;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Мобильная оптимизация */
+        @media (max-width: 768px) {
+            .article {
+                flex: 1 1 100%;
+                margin-bottom: 20px; /* Добавил отступ снизу для статей на мобильных устройствах */
+            }
+            h1 {
+                font-size: 1.8em; /* Уменьшил размер заголовка на мобильных устройствах */
+            }
+            .article h2 {
+                font-size: 1.2em; /* Уменьшил размер заголовка статьи на мобильных устройствах */
+            }
         }
-        .sidebar.active {
-            transform: translateX(0);
-        }
-        .sidebar .menu {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .sidebar .menu-item {
-            margin: 10px 0;
-        }
-        .sidebar .menu-item a {
-            color: #333;
-            text-decoration: none;
-            font-size: 1.2em;
-            display: block;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .sidebar .menu-item a:hover {
-            background-color: #f4f4f4;
-        }
-        .sidebar .submenu {
-            display: none;
-            list-style: none;
-            padding-left: 20px;
-        }
-        .sidebar .submenu .submenu-item a {
-            font-size: 1em;
-        }
-        .sidebar .menu-item.active .submenu {
-            display: block;
-        }
-        .menu-toggle {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-        }
-        .menu-toggle:hover {
-            background-color: #f4f4f4;
-        }
-        .menu-toggle .bar {
-            width: 25px;
-            height: 3px;
-            background-color: #333;
-            position: relative;
-            transition: background-color 0.3s ease;
-        }
-        .menu-toggle .bar::before,
-        .menu-toggle .bar::after {
-            content: "";
-            width: 25px;
-            height: 3px;
-            background-color: #333;
-            position: absolute;
-            left: 0;
-            transition: transform 0.3s ease;
-        }
-        .menu-toggle .bar::before {
-            top: -8px;
-        }
-        .menu-toggle .bar::after {
-            top: 8px;
-        }
-        .menu-toggle.active .bar {
-            background-color: transparent;
-        }
-        .menu-toggle.active .bar::before {
-            transform: rotate(45deg);
-        }
-        .menu-toggle.active .bar::after {
-            transform: rotate(-45deg);
-        }
-        /* Styles for the main content */
-        .main-content {
-            margin-left: 270px; /* Adjust this value based on sidebar width */
-            transition: margin-left 0.3s ease;
-        }
-        .main-content.shifted {
-            margin-left: 20px; /* Adjust this value based on sidebar width */
+        @media (max-width: 480px) {
+            .social-icons {
+                flex-direction: row; /* Убедитесь, что иконки остаются горизонтальными */
+                gap: 10px; /* Уменьшил зазор между иконками */
+            }
+            .social-icons a {
+                font-size: 1.5em; /* Уменьшил размер иконок на самых маленьких экранах */
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Sidebar menu -->
-    <div class="sidebar" id="sidebar">
-        <ul class="menu">
-            <li class="menu-item">
-                <a href="#">Подкасты</a>
-            </li>
-            <li class="menu-item">
-                <a href="#" id="social-media-toggle">Социальные сети</a>
-                <ul class="submenu" id="social-media-submenu">
-                    <li class="submenu-item"><a href="https://t.me/casinokrisa" target="_blank">Telegram</a></li>
-                    <li class="submenu-item"><a href="https://www.instagram.com/casinokrisa/" target="_blank">Instagram</a></li>
-                    <li class="submenu-item"><a href="https://twitter.com/casinokrisa_x" target="_blank">Twitter</a></li>
-                    <li class="submenu-item"><a href="https://www.youtube.com/@troeproroi" target="_blank">YouTube</a></li>
-                </ul>
-            </li>
-            <li class="menu-item">
-                <a href="privacy-policy.html">Политика конфиденциальности и отказ от ответственности</a>
-            </li>
-        </ul>
-    </div>
-
-    <!-- Menu toggle button -->
-    <div class="menu-toggle" id="menu-toggle">
-        <div class="bar"></div>
-    </div>
-
-    <!-- Main content -->
-    <div class="main-content" id="main-content">
-        <header>
-            <h1>casinokrisa</h1>
-        </header>
-        <div class="container">
-            <div class="articles">
-                <div class="article">
-                    <h2>Статья 1</h2>
-                    <p>Краткое описание первой статьи. Здесь будет информация о новостях маркетинга и социальных сетей.</p>
-                </div>
-                <div class="article">
-                    <h2>Статья 2</h2>
-                    <p>Краткое описание второй статьи. Здесь будет информация о новостях маркетинга и социальных сетей.</p>
-                </div>
-                <div class="article">
-                    <h2>Статья 3</h2>
-                    <p>Краткое описание третьей статьи. Здесь будет информация о новостях маркетинга и социальных сетей.</p>
-                </div>
+    <header>
+        <h1>casinokrisa</h1>
+    </header>
+    <div class="container">
+        <div class="articles">
+            <div class="article">
+                <h2>Статья 1</h2>
+                <p>Краткое описание первой статьи. Здесь будет информация о casinokrisa.</p>
+            </div>
+            <div class="article">
+                <h2>Статья 2</h2>
+                <p>Краткое описание второй статьи. Здесь будет информация о casinokrisa.</p>
+            </div>
+            <div class="article">
+                <h2>Статья 3</h2>
+                <p>Краткое описание третьей статьи. Здесь будет информация о casinokrisa.</p>
             </div>
         </div>
-        <footer>
-            <div class="social-icons">
-                <a href="https://t.me/casinokrisa" target="_blank"><img src="https://img.icons8.com/ios-filled/50/000000/telegram-app.png" alt="Telegram" /></a>
-                <a href="https://www.instagram.com/casinokrisa/" target="_blank"><img src="https://img.icons8.com/ios-filled/50/000000/instagram-new.png" alt="Instagram" /></a>
-                <a href="https://twitter.com/casinokrisa_x" target="_blank"><img src="https://img.icons8.com/ios-filled/50/000000/twitter.png" alt="Twitter" /></a>
-                <a href="https://www.youtube.com/@troeproroi" target="_blank"><img src="https://img.icons8.com/ios-filled/50/000000/youtube-play.png" alt="YouTube" /></a>
-            </div>
-            <p>&copy; 2024 casinokrisa. Все права защищены.</p>
-        </footer>
     </div>
-
-    <script>
-        // JavaScript for menu toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const sidebar = document.getElementById('sidebar');
-        const mainContent = document.getElementById('main-content');
-        const socialMediaToggle = document.getElementById('social-media-toggle');
-        const socialMediaSubmenu = document.getElementById('social-media-submenu');
-
-        menuToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-            mainContent.classList.toggle('shifted');
-            menuToggle.classList.toggle('active');
-        });
-
-        socialMediaToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            socialMediaSubmenu.classList.toggle('active');
-        });
-    </script>
+    <footer>
+        <div class="social-icons">
+            <a href="https://t.me/casinokrisa" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://www.instagram.com/casinokrisa/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/casinokrisa_x" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.youtube.com/@troeproroi" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2024 casinokrisa. Все права защищены.</p>
+    </footer>
 </body>
 </html>
