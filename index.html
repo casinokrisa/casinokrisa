@@ -3,67 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>casinokrisa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Ваш Сайт</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">
-                <h1>casinokrisa</h1>
-            </div>
-            <ul class="nav-links">
+            <ul>
                 <li><a href="#">Главная</a></li>
-                <li><a href="#">Подкасты</a></li>
-                <li>
-                    <a href="#" id="social-media-toggle">Социальные сети</a>
-                    <ul id="social-media-submenu">
-                        <li><a href="https://t.me/casinokrisa" target="_blank">Telegram</a></li>
-                        <li><a href="https://www.instagram.com/casinokrisa/" target="_blank">Instagram</a></li>
-                        <li><a href="https://twitter.com/casinokrisa_x" target="_blank">Twitter</a></li>
-                        <li><a href="https://www.youtube.com/@troeproroi" target="_blank">YouTube</a></li>
-                    </ul>
-                </li>
-                <li><a href="privacy-policy.html">Политика конфиденциальности</a></li>
-                <li><a href="privacy-policy.html">Отказ от ответственности</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Услуги</a></li>
+                <li><a href="#">Контакты</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <section class="hero">
-            <h2>Добро пожаловать на Casinokrisa</h2>
-            <p>Ваш источник информации о маркетинге и социальных сетях</p>
+            <h1>Добро пожаловать на наш сайт</h1>
+            <p>Мы предлагаем лучшие услуги для вас</p>
         </section>
-        <section class="articles">
-            <div class="article">
-                <h3>Статья 1</h3>
-                <p>Краткое описание первой статьи.</p>
-            </div>
-            <div class="article">
-                <h3>Статья 2</h3>
-                <p>Краткое описание второй статьи.</p>
-            </div>
-            <div class="article">
-                <h3>Статья 3</h3>
-                <p>Краткое описание третьей статьи.</p>
-            </div>
+        
+        <section class="services">
+            <h2>Наши услуги</h2>
+            <!-- Добавьте описание услуг здесь -->
+        </section>
+        
+        <section class="contact">
+            <h2>Контактная информация</h2>
+            <!-- Добавьте контактные данные здесь -->
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 casinokrisa. Все права защищены.</p>
+        <p>&copy; 2024 Ваш Сайт. Все права защищены.</p>
     </footer>
 
-    <script>
-        const socialMediaToggle = document.getElementById('social-media-toggle');
-        const socialMediaSubmenu = document.getElementById('social-media-submenu');
-
-        socialMediaToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            socialMediaSubmenu.classList.toggle('active');
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
