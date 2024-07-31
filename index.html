@@ -58,7 +58,7 @@
             justify-content: center;
             gap: 20px;
             margin: 20px 0;
-            flex-wrap: wrap; /* Позволяет оборачивание иконок при недостатке места */
+            flex-wrap: nowrap; /* Предотвращает оборачивание иконок на следующую строку */
         }
         .social-icons a {
             color: #333;
@@ -80,9 +80,8 @@
         }
         @media (max-width: 480px) {
             .social-icons {
-                /* Изменил flex-direction обратно на row для горизонтального размещения */
-                flex-direction: row;
-                gap: 10px;
+                flex-direction: row; /* Убедитесь, что иконки остаются горизонтальными */
+                gap: 10px; /* Уменьшил зазор между иконками */
             }
             .social-icons a {
                 font-size: 1.5em; /* Уменьшил размер иконок на самых маленьких экранах */
